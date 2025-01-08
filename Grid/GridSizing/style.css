@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#container {
+    display: grid;
+    grid-template-columns: auto 400px minmax(200px, 500px);
+    grid-template-rows: 1fr 1fr 2fr 50px;
+    gap: 5px;
+}
+
+.grid {
+    background-color: orange;
+    border: solid purple;
+    color: aliceblue;
+    font-size: 2em;
+    padding: 5px;
+}
