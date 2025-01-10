@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+    background-color: rgb(237, 237, 237);
+}
+
 .navbar-brand {
     text-align: center;
     font-size: 1em;
@@ -8,7 +12,6 @@
 
 .nav {
     background: transparent;
-    position: absolute;
     z-index: 20;
 }
 
@@ -20,6 +23,10 @@
     height: 100px;
     z-index: 10;
     background: linear-gradient(0, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.608), rgb(0, 0, 0));
+}
+
+.navbar-nav {
+    margin: auto;
 }
 
 .nav-link {
@@ -54,4 +61,34 @@
     width: 100vw;
     padding-top: 20px;
     background: linear-gradient(0, rgb(0, 0, 0), rgba(0, 0, 0, 0.734), rgba(0, 0, 0, 0));
+}
+
+.our {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 5em;
+    color: white;
+    background-color: rgb(28, 28, 28);
+    padding: 40px;
+}
+
+.btn-orange {
+    background-color: orangered;
+    border: 0px;
+}
+
+.btn-orange:hover {
+    background-color: rgb(222, 59, 0);
+}
+
+.grid {
+    margin: auto;
+    gap: 10px;
+    background-color: rgb(239, 239, 239);
+    max-width: 1100px;
+    padding: 40px;
+}
+
+.footer {
+    background-color: rgb(28, 28, 28);
 }
