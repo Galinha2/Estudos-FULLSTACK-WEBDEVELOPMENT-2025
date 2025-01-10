@@ -91,4 +91,8 @@ body {
 
 .footer {
     background-color: rgb(28, 28, 28);
+    width: 100vw;
+    position: absolute;
+    left: 0px;
+    margin-top: 50px;
 }
