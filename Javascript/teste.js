@@ -1,8 +1,7 @@
-var message = 'Hello';
-var names = 'Henrique';
-
-var len = names.lenght;
-
-console.log(message, 'there,', names + '!');
-
-console.log(names.length);
+let n = Math.random() * 1000 + 1;
+n = Math.floor(n);
+if (n >= 100) {
+    console.log(n + ' Congratulations!');
+} else {
+    console.log(n + ' Try again next time!')
+}
