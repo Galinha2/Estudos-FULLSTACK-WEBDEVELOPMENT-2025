@@ -59,6 +59,14 @@ function displayWinner(player1, player2) {
     }
 };
 
+//BUTTONS TO START GAME
+function startBtn() {
+    let btnStart = document.querySelectorAll('.roll');
+    btnStart.addEventListener('click', function() {
+        
+    });
+}; 
+
 //RUNNING CODE
 var p1 = randomNumber1('.dice1');
 var p2 = randomNumber1('.dice2');
