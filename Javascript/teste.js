@@ -1,19 +1,14 @@
-let rand = Math.random() * 100;
-
-let nums = [];
-
-rand = Math.floor(rand);
-nums.push(rand);
-
-function fizzBuzz () {
-    if (rand % 3 === 0) {
-        console.log('FIZZ');
-    }
-    
-    else {
-        console.log('BUZZ');
-    }
+let empregado = {
+    nome: 'Henrique',
+    idade: 25,
+    linguas: ['inglês', 'Portugues']
 };
 
-fizzBuzz();
-console.log(nums);
+function empregados (nome, idade, linguas) {
+    this.nome = nome;
+    this.idade = idade;
+    this.linguas = linguas;
+};
+
+var Eduardo = new empregados('henrique', 25, ['ingles', 'portugues']);
+console.log(Eduardo);
