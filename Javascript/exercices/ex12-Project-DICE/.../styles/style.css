@@ -59,3 +59,16 @@ h3 {
     box-shadow: inset 0px 7px 10px rgba(0, 0, 0, 0.534);
     visibility: hidden;
 }
+
+.roll {
+    height: 30px;
+    width: 150px;
+    border-radius: 20px;
+    border: 0px solid rgb(255, 255, 255);
+    background-color: #FD8B51;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bolder;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.812);
+    cursor: pointer;
+}

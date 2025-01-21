@@ -59,15 +59,31 @@ function displayWinner(player1, player2) {
     }
 };
 
-//BUTTONS TO START GAME
+//BUTTONS TO ROLL THE DICE
 function startBtn() {
     let btnStart = document.querySelectorAll('.roll');
-    btnStart.addEventListener('click', function() {
-        
-    });
+    
+    for (let n = 0; n < btnStart.length; n++) {
+        let btn = btnStart[n];
+        btn.addEventListener('click', function() {
+            randomNumber1(`.dice${n + 1}`);
+            btn.style.visibility = 'hidden';
+            
+            //ADDING RESTART BUTTON
+            if (btn.style.visibility === 'hidden') {
+                let restart = document.createElement('button');
+                restart.classList.add('roll');
+                restart.innerHTML = 'RESTART';
+                document.body.appendChild(restart);
+                
+                .querySelectorAll('.roll')
+                restart.remove();
+            };
+
+        });
+    };
 }; 
 
 //RUNNING CODE
-var p1 = randomNumber1('.dice1');
-var p2 = randomNumber1('.dice2');
+startBtn();
 displayWinner(p1, p2);
