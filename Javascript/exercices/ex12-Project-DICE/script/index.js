@@ -62,28 +62,30 @@ function displayWinner(player1, player2) {
 //BUTTONS TO ROLL THE DICE
 function startBtn() {
     let btnStart = document.querySelectorAll('.roll');
-    
+
     for (let n = 0; n < btnStart.length; n++) {
         let btn = btnStart[n];
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             randomNumber1(`.dice${n + 1}`);
-            btn.style.visibility = 'hidden';
-            
+            let hiden = btn.style.visibility = 'hidden';
+            hiden;
+
             //ADDING RESTART BUTTON
-            if (btn.style.visibility === 'hidden') {
+            if (hiden) {
+                existingRestartBtn = document.querySelector('.restart')
+
                 let restart = document.createElement('button');
-                restart.classList.add('roll');
+                restart.classList.add('roll', `restart`);
                 restart.innerHTML = 'RESTART';
                 document.body.appendChild(restart);
-                
-                .querySelectorAll('.roll')
-                restart.remove();
-            };
 
+                if (existingRestartBtn) {
+                    restart.remove()
+                };
+            };
         });
     };
-}; 
+};
 
 //RUNNING CODE
 startBtn();
-displayWinner(p1, p2);
