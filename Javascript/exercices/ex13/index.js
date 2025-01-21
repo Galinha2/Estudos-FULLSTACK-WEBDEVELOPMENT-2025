@@ -1,12 +1,13 @@
 function selectClass () {
-    let buttons = document.querySelectorAll('button');
+    let buttons = document.querySelectorAll('.drum');
 
     for (let n = 0; n < buttons.length; n++) {
         buttons[n].addEventListener('click', function () {
-        buttonAnimation()
+            let textHTML = this.innerHTML;
+            buttonAnimation(textHTML)
+            makesound(textHTML);
         });
-        makesound();
-        buttonAnimation();
+        
     };
 
     document.addEventListener('keydown', function(event) {
@@ -18,7 +19,7 @@ function selectClass () {
     function makesound(key) {
 
             switch (key) {
-                case key = 'w':
+                case 'w':
                     let tom1 = new Audio(`sounds/tom-1.mp3`);
                     tom1.play();
                     break;
@@ -26,6 +27,7 @@ function selectClass () {
                 case 'a':
                     let tom2 = new Audio(`sounds/tom-2.mp3`);
                     tom2.play();
+                    break;
 
                 case 's':
                     let tom3 = new Audio(`sounds/tom-3.mp3`);
@@ -35,6 +37,7 @@ function selectClass () {
                 case 'd':
                     let tom4 = new Audio(`sounds/tom-4.mp3`);
                     tom4.play();
+                    break;
 
                 case 'j':
                     let snare = new Audio(`sounds/snare.mp3`);
@@ -49,15 +52,17 @@ function selectClass () {
                     let crash = new Audio(`sounds/crash.mp3`);
                     crash.play();
 
-                default:
+                default: 
+                    console.log(`Key ${key} is not mapped to any sound.`);
                     break;
-            }
-    }
+            };
+    };
 
     function buttonAnimation(key) {
-        let activeButton = document.querySelector('.', key);
+        let activeButton = document.querySelector(`.${key}`);
         activeButton.classList.add('pressed')
-    }
+        setTimeout(() => activeButton.classList.remove('pressed'), 100);
+    };
 };
 
 selectClass();
