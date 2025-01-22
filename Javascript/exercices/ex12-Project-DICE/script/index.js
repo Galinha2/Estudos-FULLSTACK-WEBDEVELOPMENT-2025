@@ -1,9 +1,9 @@
 //PICKS THE NUMBERS AND SHOWS THE DOTS ON THE DICE
 function randomNumber1(classe) {
-    let rand = Math.floor(Math.random() * 7);
+    let rand = Math.ceil(Math.random() * 6);
 
     //SHOWS THE DOTS
-    if (rand === 1 || rand === 0) {
+    if (rand === 1) {
         let num = document.querySelectorAll(`${classe} .one`);
         for (let n = 0; n < num.length; n++) {
             num[n].style.visibility = 'visible';
@@ -51,22 +51,29 @@ function randomNumber1(classe) {
 function displayWinner(player1, player2) {
     let h1 = document.querySelector('h1');
     if (player1 > player2) {
-        h1.innerHTML = 'Player 1 WINS! 🏆'
+        h1.innerHTML = 'Player 1 WINS! 🏆';
     } else if (player2 > player1) {
-        h1.innerHTML = 'Player 2 WINS! 🏆'
+        h1.innerHTML = 'Player 2 WINS! 🏆';
     } else {
-        h1.innerHTML = 'Its a DRAW'
-    }
+        h1.innerHTML = 'Its a DRAW';
+    };
 };
 
 //BUTTONS TO ROLL THE DICE
 function startBtn() {
     let btnStart = document.querySelectorAll('.roll');
 
+    //ARMAZENA OS SCORES
+    let scores = [];
+
     for (let n = 0; n < btnStart.length; n++) {
+
         let btn = btnStart[n];
+
+        //BUTÕES ROLL CLICAVEIS
         btn.addEventListener('click', function () {
-            randomNumber1(`.dice${n + 1}`);
+            let score = randomNumber1(`.dice${n + 1}`);
+            scores[n] = score;
             let hiden = btn.style.visibility = 'hidden';
             hiden;
 
@@ -74,14 +81,23 @@ function startBtn() {
             if (hiden) {
                 existingRestartBtn = document.querySelector('.restart')
 
+                //CRIA BOTÃO RESTART
                 let restart = document.createElement('button');
                 restart.classList.add('roll', `restart`);
                 restart.innerHTML = 'RESTART';
                 document.body.appendChild(restart);
 
+                //REMOVE UM SEGUNDO RESTART E ESCOLHE O VENCEDOR
                 if (existingRestartBtn) {
                     restart.remove()
+                    displayWinner(scores[0], scores[1]);
+                    console.log(scores[0], scores[1]);
                 };
+
+                //DÁ REFRESH À PAGINA QUANDO APERTA RESTART
+                document.querySelector('.restart').addEventListener('click', function () {
+                    location.reload();
+                });
             };
         });
     };
