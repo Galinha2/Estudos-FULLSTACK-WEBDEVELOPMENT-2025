@@ -1,10 +1,12 @@
 function simonPick() {
-    let sequece = [];  
-    
-    while (true) {
-        let rand = Math.ceil(Math.random() * 6);
-    console.log(rand);
-    };  
-;}
+    let rand = Math.ceil(Math.random() * 4);
+
+    if (rand === 1) {
+        
+    };
+    $('.square').on('click', function(event) {
+        console.log(event);
+    });
+};
 
 simonPick();
