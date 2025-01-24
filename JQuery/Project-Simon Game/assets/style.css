@@ -33,6 +33,7 @@ h1 {
 }
 
 .square {
+    display: flex;
     border-radius: 40px;
     border: solid 10px black;
     box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.363);
