@@ -31,7 +31,7 @@ function simonPick() {
             event = 'blue';
             armazenaRand.push(event);
         };
-    }
+    };
 
     //FAZ COM QUE OS BOTÕES VOLTEM AO NORMAL
     function defaultBtns() {
@@ -45,41 +45,52 @@ function simonPick() {
     }
 
     function createsPatern() {
-        // Aumenta o nivel a cada passagem da função
+        // Recomeça o armazenamento cada vez que a func é chamada
         armazenaRand = [];
+
+        // Aumenta o nivel a cada passagem da função
         level++;
-        $('h1').text(`Level ${level}`)
+        $('h1').text(`Level ${level}`);
 
         let rand = Math.ceil(Math.random() * 4);
 
         // MOSTRA A COR RELACIONADA COM O RAND
         armazenaRandNum.push(rand);
-        console.log(armazenaRandNum, 'num')
 
+        // Enquanto o armazenaNum for maior que o armazenaRand corre:
         for (let n = 0; n < armazenaRandNum.length; n++) {
             setTimeout(function () {
+
+                // Chama a função colorPicker com o index de armazenaNum convertendo o armazenaNum na cor em STR
                 colorPicker(armazenaRandNum[n]);
                 console.log(armazenaRand, 'rand');
+
+                // Mete todos os botões default
                 setTimeout(function () {
                     defaultBtns();
                 }, 500);
             }, 1000 * (n + 1));
         };
-        // Mete todos os botões default
-    }
+    };
 
     function checkAnswer() {
+        armazenaUser = [];
+
         $('.square').on('click', function (event) {
-            let clicado = event.target.classList[1];
-            armazenaUser.push(clicado);
-            console.log(armazenaUser, 'user')
-            if (clicado != armazenaRand[armazenaRand.length - 1]) {
-                $('h1').text('YOU LOST!');
-                console.log('o rand é', armazenaRand[armazenaRand.length - 1])
+            if (armazenaUser.length < armazenaRand.length) {
+                let clicado = event.target.classList[1];
+                armazenaUser.push(clicado);
+                console.log(armazenaUser, 'user')
+                
+                for (let c = 0; c < armazenaRand.length; c++) {
+                    if (armazenaUser[c] != armazenaRand[c]) {
+                        $('h1').text('YOU LOST!');
+                        console.log('o rand é', armazenaRand[armazenaRand.length - 1])
+                    };
+                };
             } else {
-                createsPatern()
+                createsPatern;
             };
-            return clicado;
         });
     };
 
@@ -89,10 +100,11 @@ function simonPick() {
         if (event.code === 'Space') {
             setTimeout(function () {
                 createsPatern();
+
+                // Apenas corre novamente o creates patern no fim de um clique
             }, checkAnswer());
-        }
-    })
+        };
+    });
 };
 
 simonPick();
-
