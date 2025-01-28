@@ -1,31 +1,35 @@
 function simonPick() {
-    let rand = Math.ceil(Math.random() * 4);
     let armazenaUser = [];
     let armazenaRand = [];
+    let armazenaRandNum = [];
     let level = 0;
 
-    function colorPicker(rand) {
+    function colorPicker(event) {
 
         //ATRIBUI OS NUMEROS ÀS CORES E PLAY NO SOM
-        if (rand === 1) {
+        if (event === 1 || event === 'green') {
             $('.green').css('background-color', 'rgb(0, 255, 0)');
             $('#green')[0].play();
-            return rand = 'green';
+            event = 'green';
+            armazenaRand.push(event);
         };
-        if (rand === 2) {
+        if (event === 2 || event === 'red') {
             $('.red').css('background-color', 'red');
             $('#red')[0].play();
-            return rand = 'red';
+            event = 'red';
+            armazenaRand.push(event);
         };
-        if (rand === 3) {
+        if (event === 3 || event === 'yellow') {
             $('.yellow').css('background-color', 'yellow');
             $('#yellow')[0].play();
-            return rand = 'yellow';
+            event = 'yellow';
+            armazenaRand.push(event);
         };
-        if (rand === 4) {
+        if (event === 4 || event === 'blue') {
             $('.blue').css('background-color', 'blue');
             $('#blue')[0].play();
-            return rand = 'blue';
+            event = 'blue';
+            armazenaRand.push(event);
         };
     }
 
@@ -34,52 +38,61 @@ function simonPick() {
         $('.green').css('background-color', 'rgb(0, 128, 0,0.801)');
 
         $('.red').css('background-color', 'rgba(142, 0, 0, 0.801)');
-     
+
         $('.yellow').css('background-color', 'rgba(163, 163, 0, 0.801)');
 
         $('.blue').css('background-color', 'rgba(0, 0, 111, 0.801)');
     }
 
     function createsPatern() {
+        // Aumenta o nivel a cada passagem da função
+        armazenaRand = [];
         level++;
         $('h1').text(`Level ${level}`)
-        rand;
-        rand = Math.ceil(Math.random() * 4);
-        //MOSTRA A COR RELACIONADA COM O NUM
-        let color = colorPicker(rand);
-        armazenaRand.push(color);
-        colorPicker(armazenaRand)
-        console.log(armazenaRand, 'rand');
-        setTimeout(function() {
-            defaultBtns();
-        }, 300);
+
+        let rand = Math.ceil(Math.random() * 4);
+
+        // MOSTRA A COR RELACIONADA COM O RAND
+        armazenaRandNum.push(rand);
+        console.log(armazenaRandNum, 'num')
+
+        for (let n = 0; n < armazenaRandNum.length; n++) {
+            setTimeout(function () {
+                colorPicker(armazenaRandNum[n]);
+                console.log(armazenaRand, 'rand');
+                setTimeout(function () {
+                    defaultBtns();
+                }, 500);
+            }, 1000 * (n + 1));
+        };
+        // Mete todos os botões default
     }
 
     function checkAnswer() {
-        $('.square').on('click', function(event) {
+        $('.square').on('click', function (event) {
             let clicado = event.target.classList[1];
             armazenaUser.push(clicado);
             console.log(armazenaUser, 'user')
-            if (clicado != armazenaRand[armazenaRand.length - 1])  {
+            if (clicado != armazenaRand[armazenaRand.length - 1]) {
                 $('h1').text('YOU LOST!');
                 console.log('o rand é', armazenaRand[armazenaRand.length - 1])
             } else {
-                createsPatern();
+                createsPatern()
             };
             return clicado;
         });
     };
 
     //COMEÇO DO JOGO 
-    $(document).on('keydown', function(event) {
+    $(document).on('keydown', function (event) {
         //COMEÇO DO JOGO COM A TECLA SPACE
-        if (event.code === 'Space'){
-            setTimeout(function() {
-               createsPatern(); 
+        if (event.code === 'Space') {
+            setTimeout(function () {
+                createsPatern();
             }, checkAnswer());
         }
     })
 };
 
-simonPick(); 
+simonPick();
 
