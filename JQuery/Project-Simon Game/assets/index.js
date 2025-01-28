@@ -1,4 +1,7 @@
 function simonPick() {
+    let armazenaUser = [];
+    let armazenaRand = [];
+    let level = 0;
 
     function colorPicker(rand) {
 
@@ -36,51 +39,47 @@ function simonPick() {
         $('.blue').css('background-color', 'rgba(0, 0, 111, 0.801)');
     }
 
-    //ONDE  O JOGO CORRE
-    function jogoCompleto() {
-        var armazenaRand = [];
-        let armazenaUser = [];
+    function createsPatern() {
+        level++;
+        armazenaUser = [];
+        $('h1').text(`Level ${level}`)
+        let rand = Math.ceil(Math.random() * 4);
 
-        //NO INTEREVALO METE OS BOTÕES DEFAULT
-        setInterval(function() {
+        //MOSTRA A COR RELACIONADA COM O NUM
+        let color = colorPicker(rand);
+        armazenaRand.push(color);
+        console.log(armazenaRand);
+        setTimeout(function() {
             defaultBtns();
-            
-            //NA PAUSA EM 1 EM 1 SEGUNDO CORRE ISTO
-            setTimeout(function() {
-                let rand = Math.ceil(Math.random() * 4);
-                
-                //MOSTRA A COR RELACIONADA COM O NUM
-                let color = colorPicker(rand);
-                armazenaRand.push(color);
-                console.log(armazenaRand);
-                
-                //MOSTRA OS BOTÕES QUE O USER CARREGOU
-                //PRECISO METER PAUSA PRA USER INPUT AQUI EM BAIXO
-                let user = checkAnswer();
-                armazenaUser.push(user);
-                console.log(armazenaUser);
-
-            },500); 
-        }, 1000);
+        }, 300);
     }
 
     function checkAnswer() {
         $('.square').on('click', function(event) {
             let clicado = event.target.classList[1];
+            armazenaUser.push(clicado);
+            console.log(armazenaUser)
+            executor()
             return clicado;
         });
-    }
+    };
+    function executor() {
+        if (armazenaRand[armazenaRand.lenght] === armazenaUser[armazenaUser.lenght]) {
+            console.log('deu')
+            createsPatern();
+            checkAnswer();
+        };
+    };
+
 
     //COMEÇO DO JOGO 
     $(document).on('keydown', function(event) {
 
         //COMEÇO DO JOGO COM A TECLA SPACE
         if (event.code === 'Space'){
-            
-            jogoCompleto()
+            checkAnswer();
         }
     })
-  
 };
 
 simonPick(); 
