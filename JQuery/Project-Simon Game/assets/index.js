@@ -1,4 +1,5 @@
 function simonPick() {
+    let rand = Math.ceil(Math.random() * 4);
     let armazenaUser = [];
     let armazenaRand = [];
     let level = 0;
@@ -41,14 +42,14 @@ function simonPick() {
 
     function createsPatern() {
         level++;
-        armazenaUser = [];
         $('h1').text(`Level ${level}`)
-        let rand = Math.ceil(Math.random() * 4);
-
+        rand;
+        rand = Math.ceil(Math.random() * 4);
         //MOSTRA A COR RELACIONADA COM O NUM
         let color = colorPicker(rand);
         armazenaRand.push(color);
-        console.log(armazenaRand);
+        colorPicker(armazenaRand)
+        console.log(armazenaRand, 'rand');
         setTimeout(function() {
             defaultBtns();
         }, 300);
@@ -58,26 +59,24 @@ function simonPick() {
         $('.square').on('click', function(event) {
             let clicado = event.target.classList[1];
             armazenaUser.push(clicado);
-            console.log(armazenaUser)
-            executor()
+            console.log(armazenaUser, 'user')
+            if (clicado != armazenaRand[armazenaRand.length - 1])  {
+                $('h1').text('YOU LOST!');
+                console.log('o rand é', armazenaRand[armazenaRand.length - 1])
+            } else {
+                createsPatern();
+            };
             return clicado;
         });
     };
-    function executor() {
-        if (armazenaRand[armazenaRand.lenght] === armazenaUser[armazenaUser.lenght]) {
-            console.log('deu')
-            createsPatern();
-            checkAnswer();
-        };
-    };
-
 
     //COMEÇO DO JOGO 
     $(document).on('keydown', function(event) {
-
         //COMEÇO DO JOGO COM A TECLA SPACE
         if (event.code === 'Space'){
-            checkAnswer();
+            setTimeout(function() {
+               createsPatern(); 
+            }, checkAnswer());
         }
     })
 };
