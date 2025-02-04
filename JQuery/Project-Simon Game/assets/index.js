@@ -7,25 +7,25 @@ function simonPick() {
     function colorPicker(event) {
 
         //ATRIBUI OS NUMEROS ÀS CORES E PLAY NO SOM
-        if (event === 1 || event === 'green') {
+        if (event === 'c1' || event === 'green') {
             $('.green').css('background-color', 'rgb(0, 255, 0)');
             $('#green')[0].play();
             event = 'green';
             armazenaRand.push(event);
         };
-        if (event === 2 || event === 'red') {
+        if (event === 'c2' || event === 'red') {
             $('.red').css('background-color', 'red');
             $('#red')[0].play();
             event = 'red';
             armazenaRand.push(event);
         };
-        if (event === 3 || event === 'yellow') {
+        if (event === 'c3' || event === 'yellow') {
             $('.yellow').css('background-color', 'yellow');
             $('#yellow')[0].play();
             event = 'yellow';
             armazenaRand.push(event);
         };
-        if (event === 4 || event === 'blue') {
+        if (event === 'c4' || event === 'blue') {
             $('.blue').css('background-color', 'blue');
             $('#blue')[0].play();
             event = 'blue';
@@ -47,6 +47,7 @@ function simonPick() {
     function createsPatern() {
         // Recomeça o armazenamento cada vez que a func é chamada
         armazenaRand = [];
+        armazenaUser = [];
 
         // Aumenta o nivel a cada passagem da função
         level++;
@@ -55,7 +56,8 @@ function simonPick() {
         let rand = Math.ceil(Math.random() * 4);
 
         // MOSTRA A COR RELACIONADA COM O RAND
-        armazenaRandNum.push(rand);
+        armazenaRandNum.push('c' + rand);
+        console.log(armazenaRandNum, 'array de RANDOM NUMS')
 
         // Enquanto o armazenaNum for maior que o armazenaRand corre:
         for (let n = 0; n < armazenaRandNum.length; n++) {
@@ -74,37 +76,58 @@ function simonPick() {
     };
 
     function checkAnswer() {
-        armazenaUser = [];
-
+        //Pega a ação de cada clique dos quadrados
         $('.square').on('click', function (event) {
-            if (armazenaUser.length < armazenaRand.length) {
-                let clicado = event.target.classList[1];
-                armazenaUser.push(clicado);
-                console.log(armazenaUser, 'user')
-                
-                for (let c = 0; c < armazenaRand.length; c++) {
-                    if (armazenaUser[c] != armazenaRand[c]) {
-                        $('h1').text('YOU LOST!');
-                        console.log('o rand é', armazenaRand[armazenaRand.length - 1])
-                    };
-                };
-            } else {
-                createsPatern;
-            };
+            // Pega a ação, para saber qual cor pretence ao quadrado clicado
+            let clicado = event.target.classList[2];
+
+            // Envia a cor clicada para o armazenaUser
+            console.log(clicado, 'user')
+
+            return clicado;
         });
+    };
+
+    function checkingFinal() {
+
+        // Chama as cores do robo
+        createsPatern();
+
+        // Para cada cor faz o seguinte
+        for (let cor = 0; cor < armazenaRandNum.length; cor++) {
+
+            // Apenas mostra game over com o for 1 e se ambas as cores forem diferentes
+            if (cor > 1 && armazenaUser[cor] != armazenaRandNum[cor]) {
+                $('h1').text('YOU LOST!');
+                console.log('o rand é', armazenaRand[armazenaRand.length - 1])
+            } else {
+                armazenaUser.push(checkAnswer);
+                console.log(armazenaUser, 'ARRAY USER');
+                if (armazenaRandNum === armazenaUser) {
+                    console.log('bate certo')
+                } else {
+                    console.log('nao bate certo')
+                };
+            };
+        };
+
     };
 
     //COMEÇO DO JOGO 
     $(document).on('keydown', function (event) {
+
         //COMEÇO DO JOGO COM A TECLA SPACE
         if (event.code === 'Space') {
             setTimeout(function () {
-                createsPatern();
+
+                checkingFinal();
 
                 // Apenas corre novamente o creates patern no fim de um clique
-            }, checkAnswer());
+            }, clique);
         };
     });
+
+    let clique = $('.square').on('click');
 };
 
 simonPick();
