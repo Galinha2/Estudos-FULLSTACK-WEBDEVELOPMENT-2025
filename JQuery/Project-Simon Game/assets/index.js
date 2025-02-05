@@ -1,5 +1,4 @@
 function simonPick() {
-    let armazenaUser = [];
     let armazenaRand = [];
     let armazenaRandNum = [];
     let level = 0;
@@ -31,6 +30,10 @@ function simonPick() {
             event = 'blue';
             armazenaRand.push(event);
         };
+        if (event === 'wrong') {
+            $('#wrong')[0].play();
+            event = 'wrong';
+        };
     };
 
     //FAZ COM QUE OS BOTÕES VOLTEM AO NORMAL
@@ -47,7 +50,6 @@ function simonPick() {
     function createsPatern() {
         // Recomeça o armazenamento cada vez que a func é chamada
         armazenaRand = [];
-        armazenaUser = [];
 
         // Aumenta o nivel a cada passagem da função
         level++;
@@ -57,7 +59,6 @@ function simonPick() {
 
         // MOSTRA A COR RELACIONADA COM O RAND
         armazenaRandNum.push('c' + rand);
-        console.log(armazenaRandNum, 'array de RANDOM NUMS')
 
         // Enquanto o armazenaNum for maior que o armazenaRand corre:
         for (let n = 0; n < armazenaRandNum.length; n++) {
@@ -73,44 +74,76 @@ function simonPick() {
                 }, 500);
             }, 1000 * (n + 1));
         };
+        return armazenaRandNum
     };
 
-    function checkAnswer() {
-        //Pega a ação de cada clique dos quadrados
+
+    let cliqueSquare = $('.square').on('click');
+
+    // Função que lê os inputs do player
+    function clikerUser() {
+
+        //armazena os inputs
+        let cliquesUser = [];
+        let index = 0;
+
+        // A cada clique nos botões faz o seguinte:
         $('.square').on('click', function (event) {
-            // Pega a ação, para saber qual cor pretence ao quadrado clicado
-            let clicado = event.target.classList[2];
 
-            // Envia a cor clicada para o armazenaUser
-            console.log(clicado, 'user')
+            // Mete as cores dos botões nas cores default após 1,5s
+            setTimeout(function () {
+                defaultBtns();
+            }, 150);
 
-            return clicado;
-        });
-    };
+            // Na cor clicada pega a 3ª classe, c1, c2, c3 ou c4
+            let clique = event.target.classList[2]
 
-    function checkingFinal() {
+            cliquesUser.push(clique);
 
-        // Chama as cores do robo
-        createsPatern();
+            console.log(cliquesUser);
 
-        // Para cada cor faz o seguinte
-        for (let cor = 0; cor < armazenaRandNum.length; cor++) {
+            // Se a cor clicada estiver dentro da função das cores random no index[] certo
+            if (clique === sequence[index]) {
+                colorPicker(clique);
+                console.log('certo')
 
-            // Apenas mostra game over com o for 1 e se ambas as cores forem diferentes
-            if (cor > 1 && armazenaUser[cor] != armazenaRandNum[cor]) {
-                $('h1').text('YOU LOST!');
-                console.log('o rand é', armazenaRand[armazenaRand.length - 1])
-            } else {
-                armazenaUser.push(checkAnswer);
-                console.log(armazenaUser, 'ARRAY USER');
-                if (armazenaRandNum === armazenaUser) {
-                    console.log('bate certo')
-                } else {
-                    console.log('nao bate certo')
+                // Aumenta o index para a próxima cor
+                index++;
+
+                // Se o tamanho das cores selecionadas for igual as do random
+                if (cliquesUser.length === sequence.length) {
+
+                    // Reinicia todos os valores
+                    index = 0;
+                    cliquesUser = [];
+                    sequence = createsPatern();
                 };
-            };
-        };
 
+                // Ou então acaba o jogo
+            } else {
+                cliquesUser = [];
+                sequence = [];
+
+                let lost = document.createElement('div');
+                lost.classList.add('lost');
+
+                let h1Lost = document.createElement('h1');
+                h1Lost.classList.add('lostH1');
+                $(h1Lost).text('YOU LOST'); // Usando jQuery para definir o texto
+
+                let pLost = document.createElement('h1');
+                pLost.classList.add('pLost');
+                $(pLost).text('PRESS SPACE TO RESTART'); // Usando jQuery para definir o texto
+
+                lost.appendChild(h1Lost);
+                lost.appendChild(pLost);
+                $('body').append(lost); // Adiciona o 'lost' ao body
+
+                colorPicker('wrong');
+                $('.lostH1').text('YOU LOST!');
+                $('body').css('background-image', 'linear-gradient(180deg, rgb(94, 22, 22), rgb(85, 18, 83))');
+            };
+        });
     };
 
     //COMEÇO DO JOGO 
@@ -119,15 +152,24 @@ function simonPick() {
         //COMEÇO DO JOGO COM A TECLA SPACE
         if (event.code === 'Space') {
             setTimeout(function () {
+                level = 0;
+                $('h1').text(`Level ${level}`);
+                
+                sequence = [];
+                armazenaRand = [];
+                armazenaRandNum = [];
+              
+                $('.lost').remove();
 
-                checkingFinal();
+                sequence = createsPatern();
+                clikerUser();
+
+                $('body').css('background-image', 'linear-gradient(180deg, rgb(22, 30, 94), rgb(85, 18, 83))')                
 
                 // Apenas corre novamente o creates patern no fim de um clique
-            }, clique);
+            }, cliqueSquare);
         };
     });
-
-    let clique = $('.square').on('click');
 };
 
 simonPick();
