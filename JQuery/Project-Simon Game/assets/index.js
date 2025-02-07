@@ -142,6 +142,7 @@ function simonPick() {
                 colorPicker('wrong');
                 $('.lostH1').text('YOU LOST!');
                 $('body').css('background-image', 'linear-gradient(180deg, rgb(94, 22, 22), rgb(85, 18, 83))');
+
             };
         });
     };
