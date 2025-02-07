@@ -15,7 +15,7 @@ h1 {
     font-size: 2.5em;
 }
 
-.text {
+.text, h1 {
     color: rgb(242, 242, 206);
     font-family: 'Press Start 2P', cursive;
     text-align: center;
