@@ -25,7 +25,6 @@ h1 {
 }
 
 .game {
-    --aspect-ratio: 1;
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 200px));
     grid-template-rows: repeat(2, minmax(100px, 200px));    
@@ -47,14 +46,12 @@ h1 {
 }
 
 .square:hover {
-    max-width: 175px;
-    max-height: 175px; 
+     width: 175px;
+    height: 175px; 
     margin: auto;
 }
 
 .square:active {
-    max-width: 175px;
-    max-height: 175px; 
     box-shadow: 0px 0px 20px white;
 }
 
@@ -117,3 +114,24 @@ p {
     font-size: 1em;
     margin-bottom: 0px;
 }
+
+@media (max-width: 470px) {
+    body {
+      background-color: lightblue;
+    }
+
+    .game {
+        height: 340px;
+        width: 340px;
+        gap: 20px;
+    }
+
+    .square:hover {
+        max-width: 135px;
+        max-height: 135px;
+    }
+
+    h1 {
+        tex
+    }
+  }
