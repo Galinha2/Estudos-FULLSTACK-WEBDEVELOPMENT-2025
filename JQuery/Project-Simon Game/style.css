@@ -25,6 +25,7 @@ h1 {
 }
 
 .game {
+    --aspect-ratio: 1;
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 200px));
     grid-template-rows: repeat(2, minmax(100px, 200px));    
@@ -46,8 +47,8 @@ h1 {
 }
 
 .square:hover {
-    width: 175px;
-    height: 175px; 
+    max-width: 175px;
+    max-height: 175px; 
     margin: auto;
 }
 
