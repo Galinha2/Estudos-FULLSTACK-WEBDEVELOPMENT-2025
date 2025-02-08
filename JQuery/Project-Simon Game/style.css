@@ -53,6 +53,8 @@ h1 {
 }
 
 .square:active {
+    max-width: 175px;
+    max-height: 175px; 
     box-shadow: 0px 0px 20px white;
 }
 
