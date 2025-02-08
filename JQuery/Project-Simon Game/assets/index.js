@@ -82,7 +82,7 @@ function simonPick() {
 
     // Função que lê os inputs do player
     function clikerUser() {
-
+        $('.square').off('click');
         //armazena os inputs
         let cliquesUser = [];
         let index = 0;
@@ -143,33 +143,50 @@ function simonPick() {
                 $('.lostH1').text('YOU LOST!');
                 $('body').css('background-image', 'linear-gradient(180deg, rgb(94, 22, 22), rgb(85, 18, 83))');
 
+                // Adicionar event listeners para iniciar o jogo
+                $(document).on('keydown', function (event) {
+                    if (event.code === 'Space') {
+                        iniciarJogo();
+                    }
+                });
+                
+                $(document).on('touchstart', function (event) {
+                    iniciarJogo();
+                });
             };
         });
     };
 
-    //COMEÇO DO JOGO 
+    //COMEÇO DO JOGO        
+    function iniciarJogo() {
+        // Remover event listeners para prevenir reinicializações múltiplas
+        $(document).off('keydown');
+        $(document).off('touchstart');
+    
+        // Redefinir variáveis e estado do jogo
+        level = 0;
+        $('h1').text(`Level ${level}`);
+        sequence = [];
+        armazenaRand = [];
+        armazenaRandNum = [];
+        $('.lost').remove();
+    
+        // Iniciar o padrão e configurar os controles do usuário
+        sequence = createsPatern();
+        clikerUser();
+    
+        $('body').css('background-image', 'linear-gradient(180deg, rgb(22, 30, 94), rgb(85, 18, 83))');
+    }
+    
+    // Adicionar event listeners para iniciar o jogo
     $(document).on('keydown', function (event) {
-
-        //COMEÇO DO JOGO COM A TECLA SPACE
         if (event.code === 'Space') {
-            setTimeout(function () {
-                level = 0;
-                $('h1').text(`Level ${level}`);
-                
-                sequence = [];
-                armazenaRand = [];
-                armazenaRandNum = [];
-              
-                $('.lost').remove();
-
-                sequence = createsPatern();
-                clikerUser();
-
-                $('body').css('background-image', 'linear-gradient(180deg, rgb(22, 30, 94), rgb(85, 18, 83))')                
-
-                // Apenas corre novamente o creates patern no fim de um clique
-            }, cliqueSquare);
-        };
+            iniciarJogo();
+        }
+    });
+    
+    $(document).on('touchstart', function (event) {
+        iniciarJogo();
     });
 };
 
