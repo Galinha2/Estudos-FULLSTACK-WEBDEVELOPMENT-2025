@@ -152,7 +152,7 @@ function simonPick() {
                 });
                 
                 $(document).on('touchstart', function (event) {
-                    if (event === $('.lost2') || event === $('lost')) {
+                    if ($(event.target).hasClass('lost2') || $(event.target).hasClass('lost')) {
                         iniciarJogo();
                         $('.lost2').css('visibility', 'hidden')
                     }
