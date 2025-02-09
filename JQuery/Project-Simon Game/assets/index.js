@@ -152,8 +152,10 @@ function simonPick() {
                 });
                 
                 $(document).on('touchstart', function (event) {
-                    iniciarJogo();
-                    $('.lost2').css('visibility', 'hidden')
+                    if (event === $('.lost2') || event === $('lost')) {
+                        iniciarJogo();
+                        $('.lost2').css('visibility', 'hidden')
+                    }
                 });
 
                 if (level > armazenaLevel) {
