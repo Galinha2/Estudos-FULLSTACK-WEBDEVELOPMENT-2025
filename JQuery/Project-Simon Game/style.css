@@ -171,7 +171,7 @@ footer {
     }
 
     .square {
-        border: solid 5px black;
+        border: solid 6px black;
     }
 
     .square:hover {
@@ -181,14 +181,21 @@ footer {
 
     .lost {
         max-width: 300px;
+        padding: 20px;
+        border: solid white 7px;
+        border-radius: 30px;
     }
 
     .lostH1 {
-        font-size: 1.5em;
+        font-size: 1.8em;
+        margin: 10px;
+        padding: 0px;
     }
 
     .pLost {
         font-size: .9em;
+        margin: 0px;
+        padding: 0px;
     }
 }
 
