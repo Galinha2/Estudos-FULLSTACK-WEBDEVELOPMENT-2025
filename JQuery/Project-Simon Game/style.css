@@ -170,6 +170,10 @@ footer {
         gap: 20px;
     }
 
+    .square {
+        border: solid 5px black;
+    }
+
     .square:hover {
         max-width: 135px;
         max-height: 135px;
