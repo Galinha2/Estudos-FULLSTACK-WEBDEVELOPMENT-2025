@@ -75,7 +75,7 @@ function simonPick() {
                 }, 500);
             }, 1000 * (n + 1));
         };
-        return armazenaRandNum
+        return armazenaRandNum;
     };
 
     // Função que lê os inputs do player
@@ -103,7 +103,7 @@ function simonPick() {
             // Se a cor clicada estiver dentro da função das cores random no index[] certo
             if (clique === sequence[index]) {
                 colorPicker(clique);
-                console.log('certo')
+                console.log('certo');
 
                 // Aumenta o index para a próxima cor
                 index++;
@@ -122,7 +122,7 @@ function simonPick() {
                 cliquesUser = [];
                 sequence = [];
 
-                $('.lost2').css('visibility', 'visible')
+                $('.lost2').css('visibility', 'visible');
 
                 let lost = document.createElement('div');
                 lost.classList.add('lost');
@@ -147,15 +147,15 @@ function simonPick() {
                 $(document).on('keydown', function (event) {
                     if (event.code === 'Space') {
                         iniciarJogo();
-                        $('.lost2').css('visibility', 'hidden')
-                    }
+                        $('.lost2').css('visibility', 'hidden');
+                    };
                 });
                 
                 $(document).on('touchstart', function (event) {
                     if ($(event.target).hasClass('lost2') || $(event.target).hasClass('lost')) {
                         iniciarJogo();
-                        $('.lost2').css('visibility', 'hidden')
-                    }
+                        $('.lost2').css('visibility', 'hidden');
+                    };
                 });
 
                 if (level > armazenaLevel) {
