@@ -101,10 +101,12 @@ h1 {
     margin: auto;
     position: absolute;
     max-width: 600px;
+    max-height: 300px;
     background-color: rgba(156, 156, 156, 0.755);
     backdrop-filter: blur(10px);
     border-radius: 50px;
     border: 10px solid white;
+    z-index: 2;
 }
 
 .lostH1 {
@@ -148,6 +150,16 @@ footer {
     text-align: center;
     font-size: 1. 5em;
     margin-bottom: 10px;
+}
+
+.lost2 {
+    background-color: rgba(86, 0, 0, 0.396);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    visibility: hidden;
+    backdrop-filter: blur(3px);
+    z-index: 1;
 }
 
 @media (max-width: 470px) {

@@ -122,6 +122,8 @@ function simonPick() {
                 cliquesUser = [];
                 sequence = [];
 
+                $('.lost2').css('visibility', 'visible')
+
                 let lost = document.createElement('div');
                 lost.classList.add('lost');
 
@@ -145,11 +147,13 @@ function simonPick() {
                 $(document).on('keydown', function (event) {
                     if (event.code === 'Space') {
                         iniciarJogo();
+                        $('.lost2').css('visibility', 'hidden')
                     }
                 });
                 
                 $(document).on('touchstart', function (event) {
                     iniciarJogo();
+                    $('.lost2').css('visibility', 'hidden')
                 });
 
                 if (level > armazenaLevel) {
