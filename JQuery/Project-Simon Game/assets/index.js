@@ -151,7 +151,7 @@ function simonPick() {
                     };
                 });
                 
-                $(document).on('touchstart', function (event) {
+                $(document).on('click touchstart', function (event) {
                     if ($(event.target).hasClass('lost2') || $(event.target).hasClass('lost')) {
                         iniciarJogo();
                         $('.lost2').css('visibility', 'hidden');
