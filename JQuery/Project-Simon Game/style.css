@@ -3,21 +3,29 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Press Start 2P', cursive;
 }
 
 body {
     background-image: linear-gradient(180deg, rgb(22, 30, 94), rgb(85, 18, 83));
     height: 100vh;
     width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
 }
 
 h1 {
     font-size: 2.5em;
 }
 
+.text {
+    grid-column: span 4;
+}
+
 .text, h1 {
     color: rgb(242, 242, 206);
-    font-family: 'Press Start 2P', cursive;
     text-align: center;
     padding: 60px;
     margin-bottom: 50px;
@@ -31,9 +39,11 @@ h1 {
     gap: 40px;
     background-color: rgba(255, 255, 255, 0.706);
     max-width: 440px;
-    margin: auto;
     padding: 20px;
     border-radius: 55px;
+    grid-column: 2 / 4;
+    justify-self: center;
+    margin: 0px;
 }
 
 .square {
@@ -110,15 +120,36 @@ h1 {
     padding: 30px;
 }
 
-p {
+footer {
     font-size: 1em;
     margin-bottom: 0px;
+    grid-column: span 4;
+}
+
+.tabela {
+    grid-column: 4;
+    background-color: rgba(255, 255, 255, 0.706);
+    padding: 20px;
+    border-radius: 30px;
+    max-width: 240px;
+    height: 115px;
+    justify-self: start;
+}
+
+.h1Num {
+    font-size: 1.5em;
+    margin: 10px;
+    padding: 10px;
+}
+
+.num {
+    color: white;
+    text-align: center;
+    font-size: 1. 5em;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 470px) {
-    body {
-      background-color: lightblue;
-    }
 
     .game {
         height: 340px;
@@ -130,8 +161,43 @@ p {
         max-width: 135px;
         max-height: 135px;
     }
+}
 
-    h1 {
-        tex
+@media (max-width: 960px) {
+    body {
+        grid-template-columns: 12fr;
+        grid-template-rows: 1fr;
+        height: 100%;
+    }
+
+    .text {
+        margin-bottom: 0px;
+    }
+
+    .game {
+        grid-column: span 4;
+        order: 3;
+    }
+
+    .tabela {
+        margin: auto;
+        grid-column: span 4;
+        order: 2;
+        height: 80px;
+        width: 180px;
+        padding: 10px;
+    }
+
+    .h1Num {
+        font-size: 1.2em;
+        padding: 0px;
+    }
+
+    .tabela p {
+        font-size: .9em;
+    }
+
+    footer {
+        order: 3;
     }
   }

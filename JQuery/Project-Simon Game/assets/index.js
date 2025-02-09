@@ -2,6 +2,7 @@ function simonPick() {
     let armazenaRand = [];
     let armazenaRandNum = [];
     let level = 0;
+    let armazenaLevel = 0;
 
     function colorPicker(event) {
 
@@ -53,7 +54,7 @@ function simonPick() {
 
         // Aumenta o nivel a cada passagem da função
         level++;
-        $('h1').text(`Level ${level}`);
+        $('.text1').text(`Level ${level}`);
 
         let rand = Math.ceil(Math.random() * 4);
 
@@ -76,9 +77,6 @@ function simonPick() {
         };
         return armazenaRandNum
     };
-
-
-    let cliqueSquare = $('.square').on('click');
 
     // Função que lê os inputs do player
     function clikerUser() {
@@ -153,6 +151,10 @@ function simonPick() {
                 $(document).on('touchstart', function (event) {
                     iniciarJogo();
                 });
+
+                if (level > armazenaLevel) {
+                    $('.num').text(level);
+                }
             };
         });
     };
@@ -165,7 +167,7 @@ function simonPick() {
     
         // Redefinir variáveis e estado do jogo
         level = 0;
-        $('h1').text(`Level ${level}`);
+        $('.text1').text(`Level ${level}`);
         sequence = [];
         armazenaRand = [];
         armazenaRandNum = [];
