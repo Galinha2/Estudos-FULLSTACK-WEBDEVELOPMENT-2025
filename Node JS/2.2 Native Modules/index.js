@@ -7,5 +7,5 @@ newfs.readFile('/Users/henriquegalinha/Documents/VS Code/Estudos-FULLSTACK-WEBDE
 
 newfs.writeFile('testmsg.txt', 'Hello from node', (err) => {
     if (err) throw err;
-    console.log('IT WORKED');
+    console.log('IT WORKED'); 
 });
