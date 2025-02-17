@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "inquirer": "^12.4.1",
+    "qr-image": "^3.2.0",
+  },
+  "name": "qr-code-project",
+  "version": "1.0.0",
+  "description": "Isto é um projéto que obtem um codigo qr através de um link",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Henrique Galinha",
+  "license": "ISC"
+}
