@@ -20,7 +20,7 @@ app.put('/user/henrique', (req, res) => {
 
 app.delete('/user/henrique', (req, res) => {
     res.sendStatus(200);
-});
+});.
 
 app.listen(port, () => {
     console.log(`The SERVER is running on port ${port}`);
