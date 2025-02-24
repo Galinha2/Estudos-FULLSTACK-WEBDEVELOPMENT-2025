@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="PT-pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 2</title>
+</head>
+
+<body>
+    <h1>EJS TAGS</h1>
+    <p>Current seconds: <%= seconds %>
+    </p>
+
+    <ul>
+        <% if(data.seconds %2 != 0) {%>
+            <p>No items to display!</p>
+       <% } else {%>
+        <% for(let fruta = 0; fruta < data.frutas.length; fruta++) { %>
+            <li>
+                <%= data.frutas[fruta] %>
+            </li>
+            <%}
+       }%>
+    </ul>
+
+    <%= htmlContent %>
+        <%- include('footer.ejs') %>
+</body>
+
+</html>

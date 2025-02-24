@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "fruta"
+    ],
+    "cSpell.customDictionaries": {
+        "custom-dictionary-folder-estudos-fullstack-webdevelopment-2025": {
+            "name": "custom-dictionary-folder-estudos-fullstack-webdevelopment-2025",
+            "path": "${workspaceFolder:Estudos-FULLSTACK-WEBDEVELOPMENT-2025}/.cspell/custom-dictionary-folder-estudos-fullstack-webdevelopment-2025.txt",
+            "addWords": true,
+            "scope": "folder"
+        }
+    }
+}
