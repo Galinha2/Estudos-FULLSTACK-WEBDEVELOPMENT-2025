@@ -7,7 +7,7 @@ const port = 3000;
 const API_URL = "http://localhost:4000";
 
 //Add your own bearer token from the previous lesson.
-const yourBearerToken = "89b3142e-644a-483a-ab6c-eae2a3ddfc2d";
+const yourBearerToken = "916e5ae7-f6fe-4e84-bd3d-5efd61929096";
 
 // HINTs: Use the axios documentation as well as the video lesson to help you.
 // https://axios-http.com/docs/post_example
