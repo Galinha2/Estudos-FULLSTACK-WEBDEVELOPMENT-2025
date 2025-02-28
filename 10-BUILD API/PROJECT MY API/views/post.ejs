@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="PT-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API REST | POST</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <div class="frame">
+        <button class="close btn"><a href="/">x</a></button>
+        <h1>POST DATA</h1>
+        <form action="/new" method="post">
+            <textarea name="title" id="title" class="text" placeholder="Title"></textarea>
+            <textarea name="content" id="content" class="text" placeholder="Content"></textarea>
+            <textarea name="type" id="type" class="text" placeholder="Type"></textarea> 
+            <input type="submit" value="Post" class="btn post">
+        </form>
+    </div>
+
+    <div class="frame">
+        <h1>Data Posted</h1>
+        <div class="data">
+            <% if (data) { %>
+                <p>ID: <%= data.id %></p>
+                <p>Title: <%= data.title %></p>
+                <p>Content: <%= data.content %></p>
+                <p>Type: <%= data.type %></p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

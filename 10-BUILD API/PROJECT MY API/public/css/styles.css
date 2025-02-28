@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'SF PRO';
+    src: url(../fonts/SF-Pro-Rounded-Regular.otf);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: SF PRO, Arial, Helvetica, sans-serif;
+    color: rgb(100, 100, 100);
+    font-size: 1em;
+}
+
+body, html {
+    background-color: rgb(238, 238, 238);
+    margin: auto;
+}
+
+.frame {
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.106);
+    position: relative;
+    margin-top: 100px;
+    display: grid;
+}
+
+h1 {
+    grid-column: 12fr;
+    margin: auto;
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 2em;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid rgb(233, 233, 233);
+    background-color: rgb(33, 33, 33);
+    color: white;
+    grid-column: 1;
+    padding: 5px;
+}
+
+.btnA {
+    grid-column: 1;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(55, 55, 55);
+}
+
+.text {
+    grid-column: span 3;
+    grid-row: 1fr;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgb(215, 215, 215);
+    background-color: rgb(255, 255, 255);
+    height: 20px;
+}
+
+#content {
+    height: 170px;
+}
+
+.close {
+    width: 30px;
+    height: 30px;
+    border: 0px;
+    font-size: 1em;
+    border-radius: 50px;
+    grid-column:1;
+    grid-row: 1;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.data {
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgb(215, 215, 215);
+}

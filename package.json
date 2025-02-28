@@ -2,6 +2,7 @@
   "name": "estudos-fullstack-webdevelopment-2025",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +17,12 @@
     "url": "https://github.com/Galinha2/Estudos-FULLSTACK-WEBDEVELOPMENT-2025/issues"
   },
   "homepage": "https://github.com/Galinha2/Estudos-FULLSTACK-WEBDEVELOPMENT-2025#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "axios": "^1.8.1",
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "jquery": "^3.7.1"
+  }
 }
