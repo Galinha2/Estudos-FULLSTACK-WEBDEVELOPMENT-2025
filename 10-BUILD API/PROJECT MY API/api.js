@@ -22,7 +22,33 @@ let api = [
         type: 'Lorem',
         time: ''
     },
+    {
+        id: 3,
+        title: 'Lorewn  Lorsadasem',
+        content: 'Lorsadasem Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, sa politrsadeva yuitadsan sreva jiumni seef. Lorsadasem Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, sa politrsadeva yuitadsan sreva jiumni seef. Lorsadasem Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, sa politrsadeva yuitadsan sreva jiumni seef.',
+        type: 'fsdfsLorem',
+        time: ''
+    },
+    {
+        id: 4,
+        title: 'Lorsadasem  Dor',
+        content: 'Lorsadasem Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, saLorsadasem Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, sa politrsadeva yuitadsan sreva jiumni seef. politrsadeva yuitadsan sreva jiumni seef.',
+        type: 'Lofsdfsrem',
+        time: ''
+    },
+    {
+        id: 5,
+        title: ' Dor',
+        content: 'LorsadasLorsadasem Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, sa politrsadeva yuitadsan sreva jiumni seef.em Isadpsum dasdsad Diren hu sasnmet lorem upsium dorean dasd uthie, sa politrsadeva yuitadsan sreva jiumni seef.',
+        type: 'Lore34m',
+        time: ''
+    },
 ];
+
+//Mostrar toda a data
+app.get('/all', (req, res) => {
+    res.json(api);
+});
 
 //Algo aleatorio
 app.get('/random', (req, res) => {
@@ -39,7 +65,7 @@ app.get('/data/:id', (req, res) => {
     console.log(findID);
 });
 
-//Cria um dado para a api
+//POST NEW CONTENT
 app.post('/data', (req, res) => {
     const dados = {
         id: api.length + 1,
@@ -53,8 +79,33 @@ app.post('/data', (req, res) => {
     console.log(dados);
 });
 
-app.get('/new', (req, res) => {
-    res.render('post.ejs');
+app.patch('/data/:id', (req, res) => {
+     const id = parseInt(req.params.id);
+     const existingID = api.find((api) => api.id === id);
+     const replaceApi = {
+        id: id,
+        title: req.body.title || existingID.title,
+        content: req.body.content || existingID.content,
+        type: req.body.type || existingID.type,
+     }; 
+     const searchindex = api.findIndex((api) => api.id === id);
+     api[searchindex] = replaceApi;
+     res.json(replaceApi);
+});
+
+//Deletes 1 item
+app.delete('/data/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const searchindex = api.findIndex((api) => api.id === id);
+
+    if(searchindex > -1) {
+        api.splice(searchindex, 1);
+        res.sendStatus(200);
+    } else {
+        res
+        .status(404)
+        .json({error: `Data with id: ${id} not found. No data were detected!`})
+    };
 });
 
 app.listen(port, () => {

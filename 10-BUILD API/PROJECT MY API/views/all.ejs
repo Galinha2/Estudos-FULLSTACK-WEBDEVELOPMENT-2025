@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="PT-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API REST | POST</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+    <% if (data) { %>
+        <div class="frame">
+            <button class="close btn"><a href="/">x</a></button>
+            <h1><%= dataValue %></h1>
+            <% data.forEach(item => {%>
+                <div class="data">
+                    <p class="pData">ID: </p>
+                    <p class="pContent"><%= item.id %></p>
+                    <p class="pData">Title: </p>
+                    <p class="pContent"><%= item.title %></p>
+                    <p class="pData">Content: </p>
+                    <p class="pContent"><%= item.content %></p>
+                    <p class="pData">Type: </p>
+                    <p class="pContent"><%= item.type %></p>
+                    <a class="btn pd" href="/patch/<%= item.id %>">Patch</a>
+                    <a class="btn pd d" href="/delete/<%= item.id %>">Delete</a>
+                </div>
+            <% }); %>
+        </div>
+    <% } else {%>
+        <div class="frame">
+            <h1>No Data</h1>
+        </div>
+        <% } %>
+</body>
+</html>

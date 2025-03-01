@@ -47,7 +47,7 @@ form {
 .btn {
     text-align: center;
     border-radius: 20px;
-    border: 1px solid rgb(233, 233, 233);
+    border: 1px solid rgb(89, 89, 89);
     background-color: rgb(33, 33, 33);
     color: white;
     grid-column: 1;
@@ -69,7 +69,7 @@ form {
     padding: 10px;
     border-radius: 20px;
     border: 1px solid rgb(215, 215, 215);
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(137, 154, 167, 0.041);
     height: 20px;
 }
 
@@ -94,8 +94,33 @@ a {
 
 .data {
     display: grid;
-    gap: 5px;
+    grid-template-columns: 50px 500px;
+    gap: 10px;
     padding: 10px;
     border-radius: 20px;
     border: 1px solid rgb(215, 215, 215);
+    margin-bottom: 10px;
+}
+
+.pData {
+    grid-column: 1;
+    max-width: 500px;
+    color: rgb(176, 47, 0);
+    text-align: right;
+}
+
+.pContent {
+    grid-column: 2;
+}
+
+.pd {
+    max-width: 100px;
+    display: inline;
+    grid-row: 5;
+    grid-column: 8;
+    grid-row: 4;
+}
+
+.d {
+    grid-column: 9;
 }

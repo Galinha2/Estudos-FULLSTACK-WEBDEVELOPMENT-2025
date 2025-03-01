@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API REST | POST</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
 
     <div class="frame">
-        <button class="close btn"><a href="/">x</a></button>
+        <button class="close btn" onclick="window.history.back()">x</button>
         <h1>GET DATA</h1>
         <form action="/search" method="post">
-            <textarea name="title" id="title" class="text" placeholder="Title"></textarea>
-            <textarea name="content" id="content" class="text" placeholder="Content"></textarea>
-            <textarea name="type" id="type" class="text" placeholder="Type"></textarea> 
+            <textarea name="title" id="title" class="text" placeholder="Title" required></textarea>
+            <textarea name="content" id="content" class="text" placeholder="Content" required></textarea>
+            <textarea name="type" id="type" class="text" placeholder="Type" required></textarea> 
             <input type="submit" value="Get" class="btn post">
         </form>
     </div>

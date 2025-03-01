@@ -13,23 +13,28 @@
         <button class="close btn"><a href="/">x</a></button>
         <h1>POST DATA</h1>
         <form action="/new" method="post">
-            <textarea name="title" id="title" class="text" placeholder="Title"></textarea>
-            <textarea name="content" id="content" class="text" placeholder="Content"></textarea>
-            <textarea name="type" id="type" class="text" placeholder="Type"></textarea> 
+            <textarea name="title" id="title" class="text" placeholder="Title" required></textarea>
+            <textarea name="content" id="content" class="text" placeholder="Content" required></textarea>
+            <textarea name="type" id="type" class="text" placeholder="Type" required></textarea> 
             <input type="submit" value="Post" class="btn post">
         </form>
     </div>
-
-    <div class="frame">
-        <h1>Data Posted</h1>
-        <div class="data">
-            <% if (data) { %>
-                <p>ID: <%= data.id %></p>
-                <p>Title: <%= data.title %></p>
-                <p>Content: <%= data.content %></p>
-                <p>Type: <%= data.type %></p>
-            <% } %>
+    <% if (data) { %>
+        <div class="frame">
+            <h1><%= dataValew %></h1>
+                <div class="data">
+                    <p class="pData">ID: </p>
+                    <p class="pContent"><%= data.id %></p>
+                    <p class="pData">Title: </p>
+                    <p class="pContent"><%= data.title %></p>
+                    <p class="pData">Content: </p>
+                    <p class="pContent"><%= data.content %></p>
+                    <p class="pData">Type: </p>
+                    <p class="pContent"><%= data.type %></p>
+                    <a class="btn pd" href="/patch/<%= data.id %>">Patch</a>
+                    <a class="btn pd d" href="/delete/<%= data.id %>">Delete</a>
+                </div>
         </div>
-    </div>
+    <% } %>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="PT-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API REST | PATCH</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <div class="frame">
+        <button class="close btn" onclick="window.history.back()">x</button>
+        <h1>PATCH DATA</h1>
+        <form action="/patch/<%= id %>" method="post">
+            <textarea name="title" id="title" class="text" placeholder="Title" required><%= title %></textarea>
+            <textarea name="content" id="content" class="text" placeholder="Content" required><%= content %></textarea>
+            <textarea name="type" id="type" class="text" placeholder="Type" required><%= type %></textarea> 
+            <input type="submit" value="Patch" class="btn post">
+        </form>
+    </div>
+</body>
+</html>
