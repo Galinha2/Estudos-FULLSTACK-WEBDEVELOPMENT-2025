@@ -9,13 +9,35 @@
     margin: 0px;
     padding: 0px;
     font-family: SF PRO, Arial, Helvetica, sans-serif;
-    color: rgb(100, 100, 100);
+    color: #646464;
     font-size: 1em;
 }
 
 body, html {
-    background-color: rgb(238, 238, 238);
+    background-color: #6087B4;
     margin: auto;
+}
+
+.bolaWhite {
+    background-color: #eeeeee;
+    height: 2100px;
+    width: 3200px;
+    position: absolute;
+    border-radius: 100%;
+    top: 10%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.bolaRed {
+    background-color: #FF5151;
+    height: 2100px;
+    width: 3200px;
+    position: absolute;
+    border-radius: 100%;
+    top: 15%;
+    left: 45%;
+    transform: translate(-50%, -50%);
 }
 
 .frame {
@@ -26,8 +48,12 @@ body, html {
     border-radius: 20px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.106);
     position: relative;
-    margin-top: 100px;
+    margin-top: 300px;
     display: grid;
+}
+
+.f1 {
+    margin-top: 100px;
 }
 
 h1 {
@@ -48,7 +74,7 @@ form {
     text-align: center;
     border-radius: 20px;
     border: 1px solid rgb(89, 89, 89);
-    background-color: rgb(33, 33, 33);
+    background-color: #212121;
     color: white;
     grid-column: 1;
     padding: 5px;
