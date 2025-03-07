@@ -9,7 +9,7 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "world",
-  password: "123456",
+  password: "2586",
   port: 5432,
 });
 db.connect();
@@ -19,10 +19,18 @@ app.use(express.static("public"));
 
 let currentUserId = 1;
 
-let users = [
-  { id: 1, name: "Angela", color: "teal" },
-  { id: 2, name: "Jack", color: "powderblue" },
-];
+async function allUsers() {
+  const user = await db.query('SELECT * FROM users');
+  let armazenaUser = [];
+  armazenaUser = user.rows;
+  return armazenaUser;
+};
+
+async function currentUser() {
+  const users = await db.query('SELECT * FROM users');
+  const user = users.rows;
+  return await user.find((user) => user.id === currentUserId);
+};
 
 async function checkVisisted() {
   const result = await db.query("SELECT country_code FROM visited_countries");
@@ -34,6 +42,9 @@ async function checkVisisted() {
 }
 app.get("/", async (req, res) => {
   const countries = await checkVisisted();
+  console.log(countries)
+  let users = await allUsers();
+
   res.render("index.ejs", {
     countries: countries,
     total: countries.length,
@@ -42,22 +53,21 @@ app.get("/", async (req, res) => {
   });
 });
 app.post("/add", async (req, res) => {
+  const currentUsers = await currentUser();
+  console.log(currentUsers);
   const input = req.body["country"];
-
+  const user = req.body.user;
+  console.log(user)
   try {
     const result = await db.query(
       "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
-      [input.toLowerCase()]
-    );
+      [input.toLowerCase()]);
 
     const data = result.rows[0];
     const countryCode = data.country_code;
     try {
-      await db.query(
-        "INSERT INTO visited_countries (country_code) VALUES ($1)",
-        [countryCode]
-      );
-      res.redirect("/");
+      await db.query("INSERT INTO visited_countries (country_code, user_id) VALUES ($1, $2)", [countryCode, currentUsers.id]);
+      res.redirect(`/`);
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +75,26 @@ app.post("/add", async (req, res) => {
     console.log(err);
   }
 });
-app.post("/user", async (req, res) => {});
+
+app.post("/user", async (req, res) => {
+  const selectedUser = req.body;
+  const info = await db.query("SELECT * FROM visited_countries JOIN users ON users.id = visited_countries.user_id WHERE visited_countries.user_id = $1", [selectedUser.user]);
+  const countries = info.rows;
+  const country = countries.map (info => info.country_code);
+  const color = countries.map (country => country.color);
+
+  let users = await allUsers();
+
+  console.log(color[0]);
+  console.log(country);
+
+  if (req.body.add === 'new') {
+    res.render('new.ejs');
+  };
+
+  res.render('index.ejs', {users: users, color: color[0], total: country.length, countries: country});
+});
+
 
 app.post("/new", async (req, res) => {
   //Hint: The RETURNING keyword can return the data that was inserted.
