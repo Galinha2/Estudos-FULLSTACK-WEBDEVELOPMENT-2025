@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>TODAY</h1>
+    <div class="frame">
+        <% if(activity) {%>
+            <% activity.forEach(function (act) {%>
+                <ul class="frame2">
+                    <li class="activity">
+                        <span class=" dot material-symbols-outlined">
+                            fiber_manual_record
+                        </span>
+                        <p class="p-<%= act.id %>"><%= act.activity %></p>
+                        
+                        <form class="update" action="/edit/<%= act.id %>" method="post">
+                            <input id="activity-<%= act.id %>" contenteditable="true" class="editable editable-<%= act.id %>" name="submit"><%= act.activity %></input>
+                            <input class="check material-symbols-outlined update-<%= act.id %>" type="submit" value="check">
+                        </form>
+                        
+                        <form class="btnsDel btnsDel-<%= act.id %>">
+                            <button type="button" class="edit material-symbols-outlined edit-<%= act.id %>" onclick="handler('<%= act.id %>', '<%= act.activity%>')">edit_note</button>
+                        </form>
+
+                        <form class="btnsEdit" action="/delete/<%= act.id %>" method="post">
+                            <button class="delete material-symbols-outlined">delete</button>
+                        </form>
+                    </li>
+                </ul>
+          <% }) %>
+        <% } %>
+        <form action="/add" method="post">
+            <input class="input" type="text" name="activity" placeholder="New Activity">
+            <button class="submit material-symbols-outlined" name="add">add</button>
+    </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script>
+        function handler(id, act) {
+            $(`#activity-${id}`).css('visibility', 'visible');
+            $(`.edit-${id}`).css('visibility', 'hidden');
+            $(`.btnsDel-${id}`).css('visibility', 'hidden');
+            $(`.p-${id}`).css('visibility', 'hidden');
+            $(`.update-${id}`).css('visibility', 'visible');
+            $(`.editable-${id}`).val(act);
+        };
+    </script>
+</body>
+
+</html>
