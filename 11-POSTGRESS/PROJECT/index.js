@@ -19,7 +19,7 @@ const db = new pg.Client({
 db.connect();
 
 async function getAllActivities() {
-    const result = await db.query('SELECT * FROM items');
+    const result = await db.query('SELECT * FROM items ORDER BY id ASC');
     let activity = [];
 
     result.rows.forEach((act) => {
@@ -31,6 +31,7 @@ async function getAllActivities() {
 
 app.get('/', async (req, res) => {
     const activity = await getAllActivities();
+    console.log(activity)
     res.render('index.ejs', { activity: activity, act: activity });
 });
 
