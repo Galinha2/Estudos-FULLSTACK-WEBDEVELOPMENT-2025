@@ -19,7 +19,7 @@ function result() {
     const name = 'Evening'
     const color = customCss.color = 'blue'
     return {name, color};
-  }
+  };
 };
 
 const App = () => {
