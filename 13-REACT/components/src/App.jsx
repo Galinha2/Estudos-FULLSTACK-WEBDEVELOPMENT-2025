@@ -2,13 +2,20 @@ import './App.css'
 import Note from "./notes";
 import contacts from './contacts';
 
+function AllNotes(index) {
+  return(
+    <Note 
+      key={index.id}
+      title={index.title}
+      text={index.text}
+    />
+  )
+};
+
 const App = () => {
   return (
     <div className='frame'>
-      <Note {... contacts[0]} />
-      <Note {... contacts[1]} />
-      <Note {... contacts[2]} />
-      <Note {... contacts[3]} />
+      {contacts.map(AllNotes)}
   </div>
   )
 };

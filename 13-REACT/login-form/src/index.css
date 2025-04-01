@@ -1,0 +1,48 @@
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(2, 146, 146);
+  justify-content: center;
+  align-items: center;
+}
+
+.frame {
+  background-color: rgba(255, 255, 255, 0.542);
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.btn {
+  height: 40px;
+  width: 250px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 0px;
+}
+
+.log {
+  background-color: rgba(5, 5, 5, 0.278);
+  color: white;
+}
+
+.log::placeholder {
+  color: white;
+}
+
+h1 {
+  color: bisque;
+  text-align: center;
+}
