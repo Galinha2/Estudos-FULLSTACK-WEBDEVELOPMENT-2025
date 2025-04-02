@@ -1,23 +1,21 @@
 import { useState } from "react";
 
 const App = () => {
-   const [count, setCount] = useState(0);
+  let [date, getDate] = useState("TIME");
 
-   function increase() {
-    setCount(count + 1);
-   };
-   
-   function decrease() {
-    setCount(count - 1);
-   };
+  function getTime() {
+    setInterval(() => {
+      const fullTime = new Date().toLocaleTimeString();
+      getDate((date = fullTime));
+    });
+  }
 
-   return (
+  return (
     <div>
-      <h1>{count}</h1>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
+      <h1>{date}</h1>
+      <button onClick={getTime}>Get Time</button>
     </div>
-   )
+  );
 };
 
 export default App;

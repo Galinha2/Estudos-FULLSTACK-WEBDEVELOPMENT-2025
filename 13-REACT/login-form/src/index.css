@@ -46,3 +46,9 @@ h1 {
   color: bisque;
   text-align: center;
 }
+
+.btn:hover {
+  background-color: aquamarine;
+  cursor: pointer;
+  content: 'Sign in';
+}
